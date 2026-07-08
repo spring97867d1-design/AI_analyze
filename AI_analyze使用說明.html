@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube AI 分析器 - 新手使用指南</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', "Microsoft JhengHei", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background-color: #f4f7f6;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2E7D32;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1565C0;
+            margin-top: 30px;
+        }
+        .step {
+            background: #fff8e1;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #FF9800;
+            border-radius: 5px;
+        }
+        .step-number {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #E65100;
+            margin-right: 10px;
+        }
+        .warning {
+            color: #D32F2F;
+            font-weight: bold;
+        }
+        .api-link {
+            display: inline-block;
+            background-color: #1a73e8;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .api-link:hover {
+            background-color: #1557b0;
+        }
+        code {
+            background: #eeeeee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #c2185b;
+            font-family: Consolas, monospace;
+        }
+        .workflow-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .workflow-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .workflow-list li::before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🚀 YouTube AI 分析器 - 新手使用指南</h1>
+    <p>歡迎使用本程式！這是一個能幫你自動下載 YouTube 音檔，並透過 Google Gemini AI 進行重點摘要與台股分析的自動化工具。請跟著以下步驟完成首次設定。</p>
+
+    <h2>🛠️ 首次設定步驟</h2>
+
+    <div class="step">
+        <span class="step-number">Step 1.</span> <strong>略過安全警告並執行</strong><br>
+        由於這是個人開發的程式，首次點擊執行檔 (EXE) 時，Windows 可能會彈出「Windows 已保護您的電腦」藍色警告視窗。這很正常！<br>
+        👉 請點擊 <strong>「其他資訊」</strong>，然後按下 <strong>「仍要執行」</strong>。
+    </div>
+
+    <div class="step">
+        <span class="step-number">Step 2.</span> <strong>產生設定檔 (config.json)</strong><br>
+        第一次順利執行程式後，程式會閃退（或是畫面提示你找不到設定檔），這時請看一下程式所在的資料夾，系統已經自動幫你建立了一個名為 <code>config.json</code> 的檔案。
+    </div>
+
+    <div class="step">
+        <span class="step-number">Step 3.</span> <strong>填寫 Gemini API Key</strong><br>
+        程式需要有 Google 的「AI 鑰匙」才能幫你分析。請對著 <code>config.json</code> 點擊右鍵 ➔ 選擇<strong>「用記事本開啟」</strong>。<br>
+        你會看到裡面有一行：<code>"api_key": "請在此填入你的_GEMINI_API_KEY"</code>。<br>
+        <span class="warning">⚠️ 注意：必須將引號內的中文替換成你專屬的 API Key 才能執行程式！</span>
+    </div>
+
+    <div class="step">
+        <span class="step-number">Step 4.</span> <strong>如何免費取得 API Key？</strong><br>
+        請按照以下步驟免費申請你的 AI 鑰匙：
+        <ol>
+            <li>點擊下方按鈕前往 Google AI Studio 網站並登入你的 Google 帳號。</li>
+            <li>在左側選單點擊 <strong>「Get API key」</strong>。</li>
+            <li>點擊藍色按鈕 <strong>「Create API key」</strong>。</li>
+            <li>複製產生出來的那一長串英數字碼，貼回剛剛的 <code>config.json</code> 檔案中並存檔！</li>
+        </ol>
+        <a href="https://aistudio.google.com/app/apikey" target="_blank" class="api-link">🔑 前往 Google AI Studio 申請 API Key</a>
+    </div>
+
+    <h2>✨ 程式執行後會發生什麼事？</h2>
+    <p>當你設定好 API Key 並再次點擊執行檔後，程式就會正式啟動！它的完整運作流程如下：</p>
+    
+    <ul class="workflow-list">
+        <li><strong>開啟視窗：</strong> 會跳出一個介面，讓你貼上 YouTube 網址 (一次最多可貼 10 個)。</li>
+        <li><strong>下載音檔：</strong> 點擊開始後，程式會自動在背景將這些 YouTube 影片轉成高品質音檔下載。</li>
+        <li><strong>AI 分析：</strong> 程式會將音檔上傳至 Google 雲端，並請 Gemini AI 依照設定好的規則 (整理重點、時間碼、台股操作建議) 進行分析。</li>
+        <li><strong>輸出報告：</strong> 分析完成後，會在資料夾中自動產生一份 <code>.txt</code> 純文字報告。</li>
+        <li><strong>自動歸檔：</strong> 最後，程式會很貼心地建立一個名為 <code>分析完</code> 的資料夾，把處理完的音檔移進去，保持你的桌面/資料夾乾淨整潔！</li>
+    </ul>
+
+    <p style="text-align: center; margin-top: 40px; color: #757575; font-size: 0.9em;">
+        🎉 恭喜你！現在可以開始享受 AI 帶來的便利了！
+    </p>
+</div>
+
+</body>
+</html>
