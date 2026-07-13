@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube/Podcast AI 批次分析器 - 新手使用指南</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', "Microsoft JhengHei", Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background-color: #f4f7f6;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2E7D32;
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1565C0;
+            margin-top: 30px;
+            border-left: 4px solid #1565C0;
+            padding-left: 10px;
+        }
+        .step {
+            background: #fff8e1;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #FF9800;
+            border-radius: 5px;
+        }
+        .step-number {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #E65100;
+            margin-right: 10px;
+        }
+        .warning {
+            color: #D32F2F;
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+        }
+        .tip {
+            color: #0277BD;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+        }
+        .api-link {
+            display: inline-block;
+            background-color: #1a73e8;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .api-link:hover {
+            background-color: #1557b0;
+        }
+        code {
+            background: #eeeeee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #c2185b;
+            font-family: Consolas, monospace;
+        }
+        .workflow-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .workflow-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            background: #f8f9fa;
+            padding: 15px 15px 15px 40px;
+            border-radius: 8px;
+        }
+        .workflow-list li::before {
+            content: "✨";
+            position: absolute;
+            left: 12px;
+            top: 15px;
+        }
+        .badge {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🚀 YouTube/Podcast AI 批次分析器 <span style="font-size: 0.5em; color: gray;">v26.7.12.15</span></h1>
+    <p>歡迎使用！這是一個能幫你自動處理 YouTube、Podcast 網址或本機影音檔的工具。透過 Google Gemini AI (支援 3.5 Flash, 3.1 Pro 等模型) 進行重點摘要與結構化分析，甚至能直接匯出 Excel 資料表與排版精美的 TXT 筆記！請跟著以下步驟輕鬆上手。</p>
+
+    <h2>🛠️ 首次設定步驟</h2>
+
+    <div class="step">
+        <span class="step-number">Step 1.</span> <strong>略過安全警告並執行</strong><br>
+        由於這是個人開發的程式，首次點擊執行檔 (EXE) 時，Windows 可能會彈出「Windows 已保護您的電腦」藍色警告視窗。<br>
+        👉 請點擊 <strong>「其他資訊」</strong>，然後按下 <strong>「仍要執行」</strong>。
+    </div>
+
+    <div class="step">
+        <span class="step-number">Step 2.</span> <strong>一鍵設定 Gemini API Key <span class="badge">全新功能</span></strong><br>
+        打開程式後，請點擊畫面右上角的 <strong>「🔑 建立/設定 API key」</strong> 按鈕。<br>
+        如果你還沒有金鑰，請點選彈出視窗內的 <strong>「🌐 去官網申請」</strong> 前往 Google AI Studio 獲取免費的長串英數字碼。<br>
+        貼上金鑰後點擊 <strong>「💾 儲存並套用」</strong>，程式會自動連線測試並儲存，再也不用手動修改程式碼或設定檔！
+    </div>
+
+    <div class="step">
+        <span class="step-number">Step 3.</span> <strong>輸入目標 (網址 / 本機檔案)</strong><br>
+        在左側的文字框中，你可以：
+        <ul>
+            <li>貼上多個 YouTube 或 Podcast 的網址 (一次最多支援 10 個)。</li>
+            <li>直接點擊 <strong>「📁 選擇本機檔案」</strong> 或直接 <strong>「拖曳」</strong> 電腦裡的音檔/影片檔 (支援 mp3, mp4, m4a, wav 等格式) 到文字框中。</li>
+        </ul>
+    </div>
+    
+    <div class="step">
+        <span class="step-number">Step 4.</span> <strong>選擇分析模式與輸出格式</strong><br>
+        根據你的需求，在右側選擇適合的模式：
+        <ul>
+            <li><strong>A模式 (結構化+Excel)：</strong> AI 將嚴格擷取時間碼、全局重點與台股分析，並完美支援匯出 <code>Excel (結構化資料表)</code> 與 TXT。</li>
+            <li><strong>B模式 (純文字筆記)：</strong> AI 會自由排版產出結構清晰的 Markdown 重點精華筆記，適合快速閱讀，僅支援輸出 TXT。</li>
+        </ul>
+    </div>
+
+    <h2>✨ 點擊「開始批次分析」後會發生什麼事？</h2>
+    <p>程式具備強大的自動化流程與防呆機制，完整運作邏輯如下：</p>
+    
+    <ul class="workflow-list">
+        <li><strong>💡 智慧預檢與字幕神技：</strong> 程式會優先嘗試抓取 YouTube CC 原文字幕，若成功獲取，將自動切換為「文字解析」模式，免去上傳音檔的等待時間，大幅提速！</li>
+        <li><strong>☁️ 雲端音檔分析：</strong> 若找不到字幕或輸入的是本機檔案，程式會自動在背景進行轉檔，並上傳至 Google AI 雲端進行長音檔深度解析。</li>
+        <li><strong>📊 雙格式自動輸出：</strong> 分析成功後，程式會自動在 <code>AI批次分析YT影片/分析報告/當日日期</code> 資料夾中，依據您勾選的格式產出精美的 TXT 筆記或 Excel 資料表。</li>
+        <li><strong>📁 貼心自動歸檔與歷史紀錄：</strong> 處理完畢的暫存音檔會自動歸檔至 <code>分析完</code> 或 <code>分析失敗</code> 資料夾。右側的「歷史紀錄」面板更提供雙擊重試的功能，讓你隨時補跑失敗的任務！</li>
+    </ul>
+
+    <p style="text-align: center; margin-top: 40px; color: #757575; font-size: 0.9em; border-top: 1px solid #ddd; padding-top: 20px;">
+        🎉 設定完成！準備好讓 AI 幫你省下無數個聽影片的小時了嗎？趕快開始分析吧！
+	<p style="text-align: center;"> 作者:Ｗ.D.C.</p>
+    </p>
+</div>
+
+</body>
+</html>
